@@ -41,3 +41,4 @@ build/
 mise.toml
 .flattened-pom.xml
 logs
+application-local.yaml
