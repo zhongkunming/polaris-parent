@@ -33,12 +33,12 @@
 
     <distributionManagement>
         <repository>
-            <id>arpa-maven-hosted</id>
+            <id>maven-hosted</id>
             <name>snapshot</name>
             <url>http://nexus.home.arpa/repository/maven-releases</url>
         </repository>
         <snapshotRepository>
-            <id>arpa-maven-hosted-snapshot</id>
+            <id>maven-hosted-snapshot</id>
             <name>snapshot</name>
             <url>http://nexus.home.arpa/repository/maven-snapshots</url>
         </snapshotRepository>

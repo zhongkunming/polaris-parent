@@ -11,3 +11,4 @@ steps:
       - ls
       - mvn help:system
       - mvn clean package
+      - ls -alh
