@@ -14,3 +14,13 @@ steps:
     commands:
       - cd polaris-bom
       - mvn clean deploy
+
+  - name: build
+    image: maven:3-eclipse-temurin-25
+    volumes:
+      - /root/.m2:/root/.m2
+    commands:
+      - ls
+      - mvn help:system
+      - mvn clean package
+      - ls -alh
