@@ -9,6 +9,15 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
 
+    <developers>
+        <developer>
+            <name>zhongkunming</name>
+        </developer>
+    </developers>
+    <scm>
+        <url>https://github.com/zhongkunming/polaris.git</url>
+    </scm>
+
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
         <spring-boot.version>4.0.6</spring-boot.version>
