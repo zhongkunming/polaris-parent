@@ -1,0 +1,10 @@
+server:
+  port: 9210
+  shutdown: immediate
+
+spring:
+  application:
+    name: sso-server
+
+  profiles:
+    active: local

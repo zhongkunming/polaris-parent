@@ -1,0 +1,10 @@
+server:
+  port: 9080
+  shutdown: immediate
+
+spring:
+  application:
+    name: polaris-gateway
+
+  profiles:
+    active: local
