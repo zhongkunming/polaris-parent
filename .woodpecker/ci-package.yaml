@@ -1,0 +1,21 @@
+when:
+  - event: push
+    branch: main
+
+steps:
+  - name: build
+    depends_on:
+      - bom change
+    when:
+      status:
+        - success
+        - skipped
+
+    image: maven:3-eclipse-temurin-25
+    volumes:
+      - /root/.m2:/root/.m2
+    commands:
+      - ls
+      - mvn help:system
+      - mvn clean package
+      - ls -alh
