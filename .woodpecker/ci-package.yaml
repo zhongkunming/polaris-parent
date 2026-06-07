@@ -2,15 +2,11 @@ when:
   - event: push
     branch: main
 
+depends_on:
+  - bom change
+
 steps:
   - name: build
-    depends_on:
-      - bom change
-    when:
-      status:
-        - success
-        - skipped
-
     image: maven:3-eclipse-temurin-25
     volumes:
       - /root/.m2:/root/.m2
