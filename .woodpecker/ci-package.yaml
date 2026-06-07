@@ -3,7 +3,7 @@ when:
     branch: main
 
 depends_on:
-  - bom change
+  - "bom change"
 
 steps:
   - name: build
