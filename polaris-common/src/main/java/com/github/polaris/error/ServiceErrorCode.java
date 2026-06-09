@@ -24,7 +24,7 @@ public enum ServiceErrorCode implements ErrorCode {
     REQUEST_FILE_TOO_LARGE("90106", "上传文件大小超过限制"),
     MEDIA_TYPE_MISS_ERROR("90107", "数据类型转换失败"),
 
-    DATABASE_ACCESS_ERROR("90200", "[数据异常] [底层数据库异常] 原因：{}"),
+    DATABASE_ACCESS_ERROR("90200", "[数据库执行异常] 原因：{}"),
 
     ERROR_CUSTOM("99990", "{}"),
     ERROR("99999", "系统异常，请联系系统管理员");

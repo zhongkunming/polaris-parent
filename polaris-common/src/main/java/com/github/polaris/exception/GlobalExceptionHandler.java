@@ -61,7 +61,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     public JsonResponse<Void> handleHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException e) {
-        String message = String.format("不支持的媒体类型：%s", e.getContentType());
+        String message = String.format("不支持的媒体类型: %s", e.getContentType());
         log.error("[媒体类型不支持] {}", message);
         return JsonResponse.error(ServiceErrorCode.REQUEST_MEDIA_NOT_SUPPORTED, message);
     }
@@ -141,7 +141,7 @@ public class GlobalExceptionHandler {
         int errorCode = sqlException.getErrorCode();
         String sqlState = sqlException.getSQLState();
         String errorMessage = sqlException.getMessage();
-        log.error("[数据异常] [底层数据库异常] errorCode: {}, sqlState: {}, errorMessage: {}", errorCode, sqlState, errorMessage, e);
+        log.error("[数据库执行异常] errorCode: {}, sqlState: {}, errorMessage: {}", errorCode, sqlState, errorMessage, e);
         return JsonResponse.error(ServiceErrorCode.DATABASE_ACCESS_ERROR, errorMessage);
     }
 
