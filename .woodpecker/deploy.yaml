@@ -8,13 +8,4 @@ steps:
     volumes:
       - /root/.m2:/root/.m2
     commands:
-      - cd polaris-gateway
       - mvn -U clean package
-      - ls
-
-  - name: 生成制品
-    image: maven:3-eclipse-temurin-25
-    volumes:
-      - /root/.m2:/root/.m2
-    commands:
-      - ls
