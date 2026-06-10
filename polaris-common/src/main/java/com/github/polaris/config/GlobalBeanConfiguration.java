@@ -1,8 +1,12 @@
 package com.github.polaris.config;
 
+import cn.hutool.core.date.DatePattern;
+import cn.hutool.core.date.LocalDateTimeUtil;
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONWriter;
 import com.alibaba.fastjson2.support.config.FastJsonConfig;
 import com.alibaba.fastjson2.support.spring6.http.converter.FastJsonHttpMessageConverter;
+import com.alibaba.fastjson2.writer.ObjectWriter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -16,8 +20,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author zhongkunming
@@ -25,6 +31,18 @@ import java.util.List;
 @Configuration
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class GlobalBeanConfiguration {
+
+    static {
+        JSON.register(LocalDate.class, (ObjectWriter<LocalDate>) (jsonWriter, object, fieldName, fieldType, features) -> {
+            if (Objects.isNull(object)) {
+                jsonWriter.writeNull();
+                return;
+            }
+            LocalDate localDate = (LocalDate) object;
+            jsonWriter.writeString(LocalDateTimeUtil.format(localDate, DatePattern.NORM_DATE_FORMATTER));
+        });
+    }
+
 
     @Bean
     @ConditionalOnMissingBean(CorsFilter.class)
