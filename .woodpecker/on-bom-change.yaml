@@ -1,0 +1,31 @@
+when:
+  - event: push
+    branch: main
+    path:
+      include:
+        - polaris-bom*/pom.xml
+
+steps:
+  - name: bom deploy
+    when:
+      path:
+        include:
+          - polaris-bom/pom.xml
+    image: maven:3-eclipse-temurin-25
+    volumes:
+      - /root/.m2:/root/.m2
+    commands:
+      - cd polaris-bom
+      - mvn deploy
+
+  - name: bom v2 deploy
+    when:
+      path:
+        include:
+          - polaris-bom-v2/pom.xml
+    image: maven:3-eclipse-temurin-25
+    volumes:
+      - /root/.m2:/root/.m2
+    commands:
+      - cd polaris-bom-v2
+      - mvn deploy
